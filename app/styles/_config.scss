@@ -1,0 +1,57 @@
+$accent: orange; // Accent Color
+$fontsize: 16px ;// Body Font Size
+$textcolor: #333 ;// Text Color
+$lineheight: 1.65 ;// Document Line Height
+$userfont: gilroy, sans-serif ;// User Font Family
+$systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif; // System Font Family
+
+// Bootstrap compatible gutter variable => $gutter
+$grid-gutter-width: 30px;
+$gutter: $grid-gutter-width;
+
+// IMPORT SECTION
+@import 'node_modules/bootstrap/scss/bootstrap-reboot.scss' ;// Bootstrap Reboot collection
+//@import 'node_modules/bootstrap/scss/mixins/_breakpoints.scss'; // Bootstrap Breakpoints mixin
+// @import 'node_modules/bootstrap/scss/bootstrap-grid.scss'; // Optional Bootstrap Grid
+// @import 'node_modules/bootstrap/scss/utilities/_sizing.scss'; // Optional Bootstrap Utilites
+
+// FONTS LOAD SECTION
+@mixin font($fname, $fstyle, $fweight, $furl){
+  @font-face{
+    font-family: $fname;
+    font-style: $fstyle;
+    font-weight: $fweight;
+    src: url($furl) format('woff2');
+  }
+}
+
+@include font('gilroy', normal, 400, '../fonts/Gilroy-Regular.woff2');
+@include font('gilroy', normal, 500, '../fonts/Gilroy-Medium.woff2');
+@include font('gilroy', normal, 600, '../fonts/Gilroy-Semibold.woff2');
+@include font('gilroy', normal, 700, '../fonts/Gilroy-Bold.woff2');
+
+// GENERAL DOCUMENT STYLES
+::placeholder{
+  color: #666;
+}
+
+::selection{
+  background-color: $accent;
+  color: #fff;
+}
+
+input, textarea{
+  outline: none;
+  &:focus:required:invalid{border-color: red;}
+  &:required:valid{border-color: green;}
+}
+
+body{
+  font-family: $userfont;
+  font-size: $fontsize;
+  line-height: $lineheight;
+  color: $textcolor;
+  min-width: 320px;
+  position: relative;
+  overflow-x: hidden;
+}
